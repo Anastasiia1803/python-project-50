@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "gendiff"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+
+packages = [
+    { include = "gendiff" },
+]
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

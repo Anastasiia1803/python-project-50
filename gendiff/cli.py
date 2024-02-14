@@ -1,6 +1,6 @@
 import argparse
 
-from gendiff.constants import FORMATS
+from gendiff.renders import FORMATS
 
 
 def get_arg_parser():

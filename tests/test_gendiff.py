@@ -5,17 +5,21 @@ import pytest
 from gendiff.main import generate_diff
 
 FIXTURES_PATH = pathlib.Path(__file__).parent / 'fixtures'
+FILES_PATH = FIXTURES_PATH / 'files'
+RESULTS_PATH = FIXTURES_PATH / 'results'
 
 
-@pytest.mark.parametrize('paths', (
-        ('file1.json', 'file2.json', 'result.txt'),
-        ('file1.json', 'file2.json', 'result.txt'),
-        ('nested_file1.yml', 'nested_file2.yml', 'nested_result.txt'),
-        ('nested_file1.json', 'nested_file2.json', 'nested_result.txt')
+@pytest.mark.parametrize('files', (
+        ('file1.json', 'file2.json'),
+        ('file1.yml', 'file2.yml'),
 ))
-def test_gendiff(paths):
-    with open(FIXTURES_PATH / paths[2]) as f:
-        expected = f.read()
+@pytest.mark.parametrize('_format', ('plain', 'stylish', 'json'))
+@pytest.mark.parametrize('structure', ('nested', 'simple'))
+def test_gendiff(files, _format, structure):
+    expected = (RESULTS_PATH / structure / f'{_format}_result.txt').read_text()
     got = generate_diff(
-        FIXTURES_PATH / paths[0], FIXTURES_PATH / paths[1])
+        FILES_PATH / structure / files[0],
+        FILES_PATH / structure / files[1],
+        _format
+    )
     assert got == expected

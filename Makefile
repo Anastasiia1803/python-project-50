@@ -17,7 +17,7 @@ check: lint
 	pytest -vv --strict
 
 install:
-	python3 -m pip install dist/*.whl --force-reinstall
+	python -m pip install --user dist/*.whl --force-reinstall
 
 test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml

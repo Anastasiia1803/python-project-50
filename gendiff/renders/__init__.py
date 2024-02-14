@@ -1,10 +1,12 @@
-from gendiff.constants import STYLIST_FORMAT, YML_FORMAT, JSON_FORMAT
+from gendiff.constants import STYLIST_FORMAT, PLAIN_FORMAT, JSON_FORMAT
+from gendiff.renders.json import render_json
+from gendiff.renders.plain import render_plain
 from gendiff.renders.stylish import render_stylish
 
 FORMATS = {
     STYLIST_FORMAT: render_stylish,
-    YML_FORMAT: '',
-    JSON_FORMAT: '',
+    PLAIN_FORMAT: render_plain,
+    JSON_FORMAT: render_json,
 }
 
 

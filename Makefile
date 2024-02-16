@@ -16,7 +16,7 @@ test:
 check: lint
 	pytest -vv --strict
 
-make install:
+package-install:
 	python -m pip install --user dist/*.whl --force-reinstall
 
 test-coverage:

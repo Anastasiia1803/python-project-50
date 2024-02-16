@@ -14,7 +14,7 @@ test:
 	poetry run pytest -vv  --strict-markers
 
 check: lint
-	pytest -vv --strict
+	poetry run flake8 gendiff
 
 package-install:
 	python -m pip install --user dist/*.whl --force-reinstall

@@ -16,7 +16,6 @@ gendiff = "gendiff.scripts.gendiff:main"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-flake8 = "^7.0.0"
 
 
 [build-system]

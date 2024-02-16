@@ -9,10 +9,12 @@ FILES_PATH = FIXTURES_PATH / 'files'
 RESULTS_PATH = FIXTURES_PATH / 'results'
 
 
-@pytest.mark.parametrize('files', (
-        ('file1.json', 'file2.json'),
-        ('file1.yml', 'file2.yml'),
-))
+@pytest.mark.parametrize(
+    'files', (
+            ('file1.json', 'file2.json'),
+            ('file1.yml', 'file2.yml'),
+    )
+)
 @pytest.mark.parametrize('_format', ('plain', 'stylish', 'json'))
 @pytest.mark.parametrize('structure', ('nested', 'simple'))
 def test_gendiff(files, _format, structure):

@@ -13,7 +13,7 @@ lint:
 test:
 	poetry run pytest -vv  --strict-markers
 
-check: lint
+check:
 	poetry run flake8 gendiff
 
 package-install:

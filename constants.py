@@ -1,0 +1,17 @@
+JSON_FORMAT = 'json'
+PLAIN_FORMAT = 'plain'
+STYLIST_FORMAT = 'stylish'
+
+UPDATED = 'UPDATED'
+ADDED = 'ADDED'
+DELETED = 'DELETED'
+UNCHANGED = 'UNCHANGED'
+NESTED = 'NESTED'
+
+SEPARATORS = {
+    UPDATED: ' ',
+    ADDED: '+',
+    DELETED: '-',
+    UNCHANGED: ' ',
+    NESTED: ' '
+}

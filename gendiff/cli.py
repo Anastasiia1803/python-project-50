@@ -3,7 +3,7 @@ import argparse
 from gendiff.renders import FORMATS
 
 
-def get_arg_parser():
+def parse_args():
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.'
     )
@@ -11,12 +11,7 @@ def get_arg_parser():
     parser.add_argument('second_file')
     parser.add_argument(
         '-f', '--format',
-        help='set format of output: ' + ', '.join(FORMATS.keys()),
+        help=f'set format of output: {", ".join(FORMATS.keys())}',
         default='stylish', type=str
     )
-    return parser
-
-
-def parse_args():
-    args = get_arg_parser().parse_args()
-    return args
+    return parser.parse_args()

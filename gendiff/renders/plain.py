@@ -23,13 +23,13 @@ STATUSES = {
 }
 
 
-def change_value(value):
+def to_str(value):
     if isinstance(value, dict):
         value = '[complex value]'
     elif isinstance(value, tuple):
         value = list(value)
-        value[0] = change_value(value[0])
-        value[1] = change_value(value[1])
+        value[0] = to_str(value[0])
+        value[1] = to_str(value[1])
         value = tuple(value)
     elif isinstance(value, bool):
         value = str(value).lower()
@@ -38,24 +38,26 @@ def change_value(value):
     return value
 
 
-def replace_keys(diff, path='') -> list:
+def make_stylish_format(diff, path='') -> list:
     new_diff = []
     for k, v in diff.items():
-        if k[0] == NESTED:
-            new_diff += replace_keys(v, f'{path}.{k[1]}'.strip('.'))
+        separator, value = list(v.items())[0]
+        if separator == NESTED:
+            new_diff += make_stylish_format(value, f'{path}.{k}'.strip('.'))
             continue
-        elif k[0] == UNCHANGED:
+        elif separator == UNCHANGED:
             continue
 
-        v = change_value(v)
-        v = v if isinstance(v, str) else v[0], v[1],
+        value = to_str(value)
+        value = value if isinstance(value, str) else value[0], value[1]
+
         new_diff.append(TEMPLATE.format(
-            f'{path}.{k[1]}'.strip('.'),
-            STATUSES[k[0]].format(*v)
+            f'{path}.{k}'.strip('.'),
+            STATUSES[separator].format(*value)
         ))
 
     return new_diff
 
 
 def render_plain(diff) -> str:
-    return '\n'.join(replace_keys(diff))
+    return '\n'.join(make_stylish_format(diff))

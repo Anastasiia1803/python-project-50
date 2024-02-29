@@ -13,11 +13,11 @@ lint:
 test:
 	poetry run pytest -vv  --strict-markers
 
-check:
-	poetry run flake8 gendiff
-
 package-install:
 	python -m pip install --user dist/*.whl --force-reinstall
+
+package-reinstall:
+	python -m pip install dist/*.whl --force-reinstall
 
 test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml

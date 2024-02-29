@@ -1,5 +1,3 @@
-import json
-
 from gendiff.constants import UPDATED, DELETED, ADDED, NESTED, UNCHANGED
 
 SEPARATOR = " "

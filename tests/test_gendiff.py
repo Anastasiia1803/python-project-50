@@ -2,7 +2,7 @@ import pathlib
 
 import pytest
 
-from gendiff.main import generate_diff
+from gendiff.generate_diff import generate_diff
 
 FIXTURES_PATH = pathlib.Path(__file__).parent / 'fixtures'
 FILES_PATH = FIXTURES_PATH / 'files'
@@ -16,7 +16,7 @@ RESULTS_PATH = FIXTURES_PATH / 'results'
     )
 )
 @pytest.mark.parametrize('_format', ('plain', 'stylish', 'json'))
-@pytest.mark.parametrize('structure', ('nested', 'simple'))
+@pytest.mark.parametrize('structure', ('nested', 'flat'))
 def test_gendiff(files, _format, structure):
     expected = (RESULTS_PATH / structure / f'{_format}_result.txt').read_text()
     got = generate_diff(

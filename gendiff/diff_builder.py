@@ -6,6 +6,7 @@ def get_diff(data1, data2):
     diff = {}
     for key1, value1 in data1.items():
         value2 = data2.get(key1)
+
         if isinstance(value1, str):
             value1 = value1.strip()
 

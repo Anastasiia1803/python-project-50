@@ -10,7 +10,7 @@ FORMATS = {
 }
 
 
-def render_view(diff, format_):
+def render_diff(diff, format_):
     render_func = FORMATS.get(format_)
     if render_func is None:
         raise ValueError(f'Неверный формат: {format_}')

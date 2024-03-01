@@ -14,17 +14,19 @@ def to_str(value, spaces_count=2):
         return str(value).lower()
     elif isinstance(value, tuple):
         value = list(value)
-        value[0] = to_str(value[0])
-        value[1] = to_str(value[1])
+        value[0] = to_str(value[0], spaces_count)
+        value[1] = to_str(value[1], spaces_count)
         value = tuple(value)
     elif isinstance(value, dict):
         indent = SEPARATOR * (spaces_count + 4)
         lines = []
         for key, inner_value in value.items():
             formatted_value = to_str(inner_value, spaces_count + 4)
-            lines.append(f"{indent}  {key}: {formatted_value}")
+            lines.append(f"{indent}{NONE}{key}: {formatted_value}")
+
         formatted_string = '\n'.join(lines)
-        end_indent = SEPARATOR * (spaces_count + 4)
+        end_indent = SEPARATOR * (spaces_count + 2)
+
         return f"{{\n{formatted_string}\n{end_indent}}}"
     return value
 
@@ -39,8 +41,9 @@ def render_stylish(diff, spaces_count=2):
                 value, spaces_count + 4
             )
             lines.append(f"{indent}{NONE}{k}: {nested}")
+            continue
 
-        value = to_str(value)
+        value = to_str(value, spaces_count)
 
         if separator == UNCHANGED:
             current_value = to_str(value, spaces_count)
@@ -55,5 +58,4 @@ def render_stylish(diff, spaces_count=2):
 
     formatted_string = '\n'.join(lines)
     end_indent = SEPARATOR * (spaces_count - 2)
-
     return f"{{\n{formatted_string}\n{end_indent}}}"

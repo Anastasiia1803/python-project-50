@@ -19,6 +19,8 @@ def to_str(value):
         value = tuple(value)
     elif isinstance(value, bool):
         value = str(value).lower()
+    elif value is None:
+        value = 'null'
     else:
         value = f"'{value}'"
     return value

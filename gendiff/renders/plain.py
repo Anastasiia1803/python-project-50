@@ -21,8 +21,10 @@ def to_str(value):
         value = str(value).lower()
     elif value is None:
         value = 'null'
-    else:
+    elif isinstance(value, str):
         value = f"'{value}'"
+    else:
+        value = str(value)
     return value
 
 

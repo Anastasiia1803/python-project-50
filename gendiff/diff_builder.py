@@ -25,6 +25,6 @@ def get_diff(data1, data2):
         diff[key1] = {UNCHANGED: value1}
 
     for key2, value2 in data2.items():
-        if key2 not in data1.get(key2):
+        if key2 not in data1:
             diff[key2] = {ADDED: value2}
     return dict(sorted(diff.items(), key=lambda item: item[0]))

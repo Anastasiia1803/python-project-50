@@ -11,7 +11,10 @@
                 "DELETED": 200
             },
             "setting3": {
-                "DELETED": true
+                "UPDATED": [
+                    true,
+                    null
+                ]
             },
             "setting4": {
                 "ADDED": "blah blah"

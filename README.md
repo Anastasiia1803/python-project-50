@@ -1,9 +1,9 @@
 # Вычислитель отличий (gendiff)
-![Hexlet Badge]('Id: 603940')
+![Hexlet Badge](603940)
 [![Actions Status](https://github.com/Anastasiia1803/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/Anastasiia1803/python-project-50/actions)
 [![Check_my_Actions](https://github.com/Anastasiia1803/python-project-50/actions/workflows/main.yml/badge.svg)](https://github.com/Anastasiia1803/python-project-50/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/494bdd544175e66ad82b/maintainability)](https://codeclimate.com/github/Anastasiia1803/python-project-50/maintainability)
-[![Test Coverage]('<a href="https://codeclimate.com/github/Anastasiia1803/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/16a0e83399b2173066e2/test_coverage" /></a>')]
+[![Test Coverage](<a href="https://codeclimate.com/github/Anastasiia1803/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/16a0e83399b2173066e2/test_coverage" /></a>)]
 
 
 #### Поддерживаемые форматы файлов

@@ -1,9 +1,8 @@
 from gendiff.constants import UPDATED, DELETED, ADDED, NESTED, UNCHANGED
 
-SEPARATOR = " "
-ADD = '+ '
-DELETE = '- '
-NONE = '  '
+SEPARATOR = ' '
+ADD = '+'
+DELETE = '-'
 
 
 def to_str(value, spaces_count=2):
@@ -22,7 +21,7 @@ def to_str(value, spaces_count=2):
         lines = []
         for key, inner_value in value.items():
             formatted_value = to_str(inner_value, spaces_count + 4)
-            lines.append(f"{indent}{NONE}{key}: {formatted_value}")
+            lines.append(f"{indent}{'  '}{key}: {formatted_value}")
 
         formatted_string = '\n'.join(lines)
         end_indent = SEPARATOR * (spaces_count + 2)
@@ -40,21 +39,21 @@ def render_stylish(diff, spaces_count=2):
             nested = render_stylish(
                 value, spaces_count + 4
             )
-            lines.append(f"{indent}{NONE}{k}: {nested}")
+            lines.append(f"{indent}{'  '}{k}: {nested}")
             continue
 
         value = to_str(value, spaces_count)
 
         if separator == UNCHANGED:
             current_value = to_str(value, spaces_count)
-            lines.append(f"{indent}{NONE}{k}: {current_value}")
+            lines.append(f"{indent}{'  '}{k}: {current_value}")
         elif separator == UPDATED:
-            lines.append(f"{indent}{DELETE}{k}: {value[0]}")
-            lines.append(f"{indent}{ADD}{k}: {value[1]}")
+            lines.append(f"{indent}{DELETE} {k}: {value[0]}")
+            lines.append(f"{indent}{ADD} {k}: {value[1]}")
         elif separator == DELETED:
-            lines.append(f"{indent}{DELETE}{k}: {value}")
+            lines.append(f"{indent}{DELETE} {k}: {value}")
         elif separator == ADDED:
-            lines.append(f"{indent}{ADD}{k}: {value}")
+            lines.append(f"{indent}{ADD} {k}: {value}")
 
     formatted_string = '\n'.join(lines)
     end_indent = SEPARATOR * (spaces_count - 2)

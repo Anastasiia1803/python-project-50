@@ -47,4 +47,4 @@ poetry run gendiff -f json file1.json file2.json
 ***
 
 ### Демонстрация работы программы:
-***
+https://asciinema.org/a/hxI6GELsnlyPU5gRY8TAvM2PN
